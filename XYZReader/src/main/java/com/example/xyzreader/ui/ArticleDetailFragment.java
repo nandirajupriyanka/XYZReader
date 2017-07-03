@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.graphics.Palette;
 import android.text.Html;
@@ -140,7 +141,8 @@ public class ArticleDetailFragment extends Fragment implements
 
         mStatusBarColorDrawable = new ColorDrawable(0);
 
-        mRootView.findViewById(R.id.share_fab).setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fab = (FloatingActionButton) mRootView.findViewById(R.id.share_fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(getActivity())
@@ -204,9 +206,6 @@ public class ArticleDetailFragment extends Fragment implements
         TextView bylineView = (TextView) mRootView.findViewById(R.id.article_byline);
         bylineView.setMovementMethod(new LinkMovementMethod());
         TextView bodyView = (TextView) mRootView.findViewById(R.id.article_body);
-
-
-        bodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
 
         if (mCursor != null) {
             mRootView.setAlpha(0);
